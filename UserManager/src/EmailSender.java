@@ -3,52 +3,64 @@ import javax.mail.*;
 import javax.mail.internet.*;
 
 public class EmailSender  {
+	
 	public static void EmailSend() {
-		// Sender's email ID needs to be mentioned
-		String from = "eliasadam60@gmail.com";
+		String from = "tesztelek278@gmail.com";
 		String pass = "Almafa2a";
-		// Recipient's email ID needs to be mentioned.
 		String to = "testforucc@gmail.com";
-
 		String host = "smtp.gmail.com";
-
-		// Get system properties
 		Properties properties = System.getProperties();
-		// Setup mail server
 		properties.put("mail.smtp.starttls.enable", "true");
 		properties.put("mail.smtp.host", host);
 		properties.put("mail.smtp.user", from);
 		properties.put("mail.smtp.password", pass);
 		properties.put("mail.smtp.port", "587");
 		properties.put("mail.smtp.auth", "true");
-
-		// Get the default Session object.
 		Session session = Session.getDefaultInstance(properties);
-
 		try {
-			// Create a default MimeMessage object.
 			MimeMessage message = new MimeMessage(session);
-
-			// Set From: header field of the header.
 			message.setFrom(new InternetAddress(from));
-
-			// Set To: header field of the header.
 			message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
-
-			// Set Subject: header field
-			message.setSubject("This is the Subject Line!");
-
-			// Now set the actual message
-			message.setText("This is actual message");
-
-			// Send message
+			message.setSubject("Értesítés! - Ne válaszoljon erre az üzenetre!");
+			message.setText("Automatikus üzenet: A programban hibás adat került bevitelre vagy hiba történt a programban.");
 			Transport transport = session.getTransport("smtp");
 			transport.connect(host, from, pass);
 			transport.sendMessage(message, message.getAllRecipients());
 			transport.close();
-			System.out.println("Sent message successfully....");
+			System.out.println("Üzenet elküldve sikeresen.");
 		} catch (MessagingException mex) {
 			mex.printStackTrace();
 		}
 	}
+	
+	public static void EmailSendMod() {
+		String from = "tesztelek278@gmail.com";
+		String pass = "Almafa2a";
+		String to = "testforucc@gmail.com";
+		String host = "smtp.gmail.com";
+		Properties properties = System.getProperties();
+		properties.put("mail.smtp.starttls.enable", "true");
+		properties.put("mail.smtp.host", host);
+		properties.put("mail.smtp.user", from);
+		properties.put("mail.smtp.password", pass);
+		properties.put("mail.smtp.port", "587");
+		properties.put("mail.smtp.auth", "true");
+		Session session = Session.getDefaultInstance(properties);
+		try {
+			MimeMessage message = new MimeMessage(session);
+			message.setFrom(new InternetAddress(from));
+			message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+			message.setSubject("Értesítés! - Ne válaszoljon erre az üzenetre!");
+			message.setText("Automatikus üzenet:Egy felhasználó adati módosítva lettek.");
+			Transport transport = session.getTransport("smtp");
+			transport.connect(host, from, pass);
+			transport.sendMessage(message, message.getAllRecipients());
+			transport.close();
+			System.out.println("Üzenet elküldve sikeresen.");
+		} catch (MessagingException mex) {
+			mex.printStackTrace();
+		}
+	}
+	
+	
 }

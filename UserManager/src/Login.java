@@ -1,8 +1,5 @@
 import javax.swing.border.EmptyBorder;
 
-import com.mysql.jdbc.util.LRUCache;
-
-import javax.swing.Box.Filler;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -12,25 +9,19 @@ import java.sql.Statement;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import java.sql.*;
-
-import java.util.Date;
 
 public class Login extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField username;
 	private JTextField password;
-
 	private static Connection conn = null;
 	private Statement s = null;
 	private PreparedStatement ps = null;
 	private ResultSet rs = null;
-	private String user = "root"; // User megadása
-	private String pswd = "root"; // Jelszó megadása
+	private String user = "eliasadam60"; // User megadása
+	private String pswd = "Almafa2a"; // Jelszó megadása
 	private TM tm;
-	private TM kertm;
-	private String ker = "kod";
 
 	private static String mes = "Program üzenete:";
 
@@ -170,7 +161,6 @@ public class Login extends JFrame {
 					}
 					Lekapcs();
 				}
-
 			}
 		});
 		btMod.setFont(new Font("Arial", Font.PLAIN, 12));
@@ -206,7 +196,6 @@ public class Login extends JFrame {
 					}
 					Lekapcs();
 				}
-
 			}
 		});
 		btExport.setFont(new Font("Arial", Font.PLAIN, 12));
@@ -241,15 +230,24 @@ public class Login extends JFrame {
 		lblHaNincsMg.setBounds(10, 11, 259, 23);
 		panel_2.add(lblHaNincsMg);
 		lblHaNincsMg.setFont(new Font("Arial", Font.PLAIN, 14));
+		
+		JButton btnSg = new JButton("S\u00FAg\u00F3");
+		btnSg.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Sugo ks = new Sugo(Login.this);
+				ks.setVisible(true);
+			}
+		});
+		btnSg.setBounds(179, 36, 90, 23);
+		panel_2.add(btnSg);
+		btnSg.setFont(new Font("Arial", Font.PLAIN, 12));
+		btnSg.setBackground(SystemColor.menu);
 		btReg.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
 				if (e.getSource().equals(btReg)) {
 					Beszur();
 				}
-
 			}
-
 		});
 		btLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -273,17 +271,14 @@ public class Login extends JFrame {
 				Lekapcs();
 			}
 		});
-
 		Object[] emptmn = { "Felh.", "Jelszó", "Típus", "Név", "E-mail", "Neme", "Szül.idõ", "Ország" };
 		tm = new TM(emptmn, 0);
 	}
 
 	public static void main(String[] args) {
-
 		Login frame = new Login();
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.setVisible(true);
-
 		try {
 			for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
 				if ("Nimbus".equals(info.getName())) {
@@ -300,7 +295,6 @@ public class Login extends JFrame {
 		} catch (javax.swing.UnsupportedLookAndFeelException ex) {
 			java.util.logging.Logger.getLogger(Kereses.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 		}
-
 	}
 
 	public void Beszur() {
@@ -320,6 +314,7 @@ public class Login extends JFrame {
 				ps.setString(4, us.getName());
 				ps.setString(5, us.getEmail());
 				ps.setString(6, us.getSex());
+				
 				ps.setString(7, us.getDateofbirth());
 				ps.setString(8, us.getCountry());
 				ps.executeUpdate();
@@ -332,10 +327,10 @@ public class Login extends JFrame {
 		}
 	}
 	
-	public static void Kapcs(String user, String pswd) { // ----------------------------------Kapcsolódás
+	public void Kapcs(String user, String pswd) { // ----------------------------------Kapcsolódás
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			String url = "jdbc:mysql://localhost/users";
+			String url = "jdbc:mysql://db4free.net/uccusers";
 			conn = DriverManager.getConnection(url, user, pswd);
 			System.out.print("Kapcsolódva az adatbázishoz!");
 		} catch (Exception ex) {
@@ -343,7 +338,7 @@ public class Login extends JFrame {
 		}
 	}
 
-	public static void Lekapcs() { // ----------------------------------Lekapcsolódás
+	public  void Lekapcs() { // ----------------------------------Lekapcsolódás
 		try {
 			conn.close();
 			System.out.println("Sikeres lekapcsolodas");
@@ -355,14 +350,14 @@ public class Login extends JFrame {
 	public void Lista() {
 		Object Mezonevekp[] = { "Felh.", "Jelszó", "Típus", "Név", "E-mail", "Neme", "Szül.idõ", "Ország" };
 		tm = new TM(Mezonevekp, 0);
-		Control.Kapcs(user, pswd);
+		Kapcs(user, pswd);
 		if (tm.getRowCount() > 0)
 			for (int i = 0; i < tm.getRowCount(); i++) {
 				tm.removeRow(i);
 				i--;
 			}
 		FelhLista();
-		Control.Lekapcs();
+		Lekapcs();
 		Point bs = getLocation();
 		int bsx = (int) bs.getX();
 		int bsy = (int) bs.getY();
@@ -372,7 +367,6 @@ public class Login extends JFrame {
 
 	public void FelhLista() { // ----------------------------------User adatainak beolvasása
 		String felh = "", pw = "", tip = "", nev = "", mail = "", nem = "", szuldat = "", orszag = "";
-
 		String sqlp = "select * from users";
 		try {
 			s = conn.createStatement();
@@ -387,7 +381,6 @@ public class Login extends JFrame {
 				nem = rs.getString("sex").trim();
 				szuldat = rs.getString("dateofbirth").trim();
 				orszag = rs.getString("country").trim();
-
 				tm.addRow(new Object[] { felh, pw, tip, nev, mail, nem, szuldat, orszag });
 			}
 			rs.close();
@@ -395,7 +388,4 @@ public class Login extends JFrame {
 			JOptionPane.showMessageDialog(null, "Nem sikerült betölteni az adatokat!" + e.getMessage(), mes, 2);
 		}
 	}
-	
-	
-
 }

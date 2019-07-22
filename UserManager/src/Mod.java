@@ -1,14 +1,9 @@
 import java.awt.*;
-
 import java.sql.*;
 import javax.swing.*;
 import java.awt.event.*;
-
 import javax.swing.border.*;
-import java.util.Calendar;
-
 import org.apache.commons.lang3.RandomStringUtils;
-import com.toedter.calendar.JDateChooser;
 
 public class Mod extends JPanel implements ActionListener, FocusListener {
 	Connection conn;
@@ -211,6 +206,7 @@ public class Mod extends JPanel implements ActionListener, FocusListener {
 				if (ae.getSource() == btn_update) {
 					Update_Record();
 					flag = 2;
+					
 				}
 			}
 		});
@@ -228,20 +224,17 @@ public class Mod extends JPanel implements ActionListener, FocusListener {
 				String sql = "delete from users where username=?";
 
 				try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-					
-					reply=JOptionPane.showConfirmDialog(null,"Biztos törli a felhasználót?");
-                    if(reply==JOptionPane.YES_OPTION)
-                    {                                       
-                    	stmt.setString(1, txtFelh.getText());
-    					stmt.executeUpdate();     
-    					Control.showMD("Rekord törölve", 1);
-                    }                                       
-                    if(reply==JOptionPane.NO_OPTION)
-                    {                                               
-                            return;
-                    }   
-					
-					
+
+					reply = JOptionPane.showConfirmDialog(null, "Biztos törli a felhasználót?");
+					if (reply == JOptionPane.YES_OPTION) {
+						stmt.setString(1, txtFelh.getText());
+						stmt.executeUpdate();
+						Control.showMD("Rekord törölve", 1);
+					}
+					if (reply == JOptionPane.NO_OPTION) {
+						return;
+					}
+
 				} catch (SQLException ex) {
 					ex.printStackTrace();
 				}
@@ -269,7 +262,7 @@ public class Mod extends JPanel implements ActionListener, FocusListener {
 		if (ae.getSource() == btn_search) {
 			Search_Record();
 		}
-		
+
 		if (ae.getSource() == btn_cancel) {
 			clsAllFlds();
 		}
@@ -374,6 +367,7 @@ public class Mod extends JPanel implements ActionListener, FocusListener {
 					pre_update.executeUpdate();
 
 					JOptionPane.showMessageDialog(null, "Fiók sikeresen módosítva!", "Note", 2);
+					EmailSender.EmailSendMod();
 					setBackgroundColor();
 					Search_Record();
 				}
@@ -390,7 +384,8 @@ public class Mod extends JPanel implements ActionListener, FocusListener {
 
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mysql://localhost/users", "root", "root");
+			String url = "jdbc:mysql://db4free.net/uccusers";
+			conn = DriverManager.getConnection("jdbc:mysql://db4free.net/uccusers", "eliasadam60", "Almafa2a");
 			stmt = conn.createStatement();
 			System.out.println("Sikeres kapcsolódás");
 		} catch (SQLException se) {

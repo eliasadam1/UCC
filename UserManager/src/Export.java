@@ -4,17 +4,13 @@ import javax.swing.*;
 
 import java.awt.event.*;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 import java.awt.*;
-import java.util.*;
 
 public class Export extends JPanel implements ActionListener {
 	private JButton browser;
@@ -24,6 +20,13 @@ public class Export extends JPanel implements ActionListener {
 	private JTextField iras;
 	private JTextField fname;
 	private String a = "mappa";
+	private static String mes = "Program üzenete:";
+	
+	private static Connection conn = null;
+	private String user = "eliasadam60"; // User megadása
+	private String pswd = "Almafa2a"; // Jelszó megadása
+	
+	
 
 	public Export() {
 		setBackground(new Color(230, 230, 250));
@@ -127,15 +130,12 @@ public class Export extends JPanel implements ActionListener {
 
 	public void FileExport() {
 		String f = fname.getText();
-		Connection connect = null;
 		Statement s = null;
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			connect = DriverManager.getConnection("jdbc:mysql://localhost/users", "root", "root");
-			s = connect.createStatement();
+			Kapcs(user, pswd);
+			s = conn.createStatement();
 			String sql = "SELECT * FROM  users ORDER BY username ASC";
 			ResultSet rec = s.executeQuery(sql);
-			
 			String path =  a + "\\" + f + ".csv";
 			FileWriter writer;
 
@@ -170,17 +170,28 @@ public class Export extends JPanel implements ActionListener {
 			Control.showMD("Adatok kiírása sikertelen.", 2);
 			e.printStackTrace();
 		}
-		// Close
-		try {
-			if (connect != null) {
-				s.close();
-				connect.close();
-			}
-		} catch (SQLException e) {
-			Control.showMD("Sikertelen lekapcsolódás az adatbázisról.", 2);
-			e.printStackTrace();
-		}
+		Lekapcs();
 
+	}
+	
+	public void Kapcs(String user, String pswd) { // ----------------------------------Kapcsolódás
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			String url = "jdbc:mysql://db4free.net/uccusers";
+			conn = DriverManager.getConnection(url, user, pswd);
+			System.out.print("Kapcsolódva az adatbázishoz!");
+		} catch (Exception ex) {
+			JOptionPane.showMessageDialog(null, "Kapcsolódási hiba: " + ex.getMessage(), mes, 2);
+		}
+	}
+
+	public void Lekapcs() { // ----------------------------------Lekapcsolódás
+		try {
+			conn.close();
+			System.out.println("Sikeres lekapcsolodas");
+		} catch (Exception ex) {
+			JOptionPane.showMessageDialog(null, "Kapcsolat lezárási hiba: " + ex.getMessage(), mes, 2);
+		}
 	}
 
 }
