@@ -11,19 +11,14 @@ public class Mod extends JPanel implements ActionListener, FocusListener {
 	ResultSet rs;
 	String url;
 	int nrows, reply, response, stmtval, flag;
-
 	Border border;
-
 	Color c1 = new Color(255, 146, 34);
-	Color c2 = new Color(251, 254, 120);// yellow
+	Color c2 = new Color(251, 254, 120);
 	Color c5 = new Color(190, 190, 240);
-
 	Font f4 = new Font("Arial", Font.BOLD, 12);
-
-	JLabel lblinsrcds, clas, reg, sname, fname, category, studob, sex, city, lblhobby;
+	JLabel pw, fnev, nev, email, tip, szulido, sex, country;
 	JTextField txtFelh, txtName, txtTip, txtEmail, txtSzulido, txtCountry, txtPw, txtSex;
 	JButton btn_search, btn_cancel, btn_exit;
-
 	String strfelh, strpw, strtip, strnev, strmail, strsex, strbirth, strcountry;
 	private JButton btnJelszGenerls;
 	private JButton btn_update;
@@ -35,13 +30,13 @@ public class Mod extends JPanel implements ActionListener, FocusListener {
 		setLayout(null);
 		border = new BevelBorder(BevelBorder.LOWERED);
 
-		// JLabel Reg.No.
-		reg = new JLabel("Felhaszn\u00E1l\u00F3n\u00E9v:");
-		reg.setBounds(30, 60, 100, 30);
-		reg.setFont(new Font("Arial", Font.BOLD, 12));
-		add(reg);
+		
+		fnev = new JLabel("Felhaszn\u00E1l\u00F3n\u00E9v:");
+		fnev.setBounds(30, 60, 100, 30);
+		fnev.setFont(new Font("Arial", Font.BOLD, 12));
+		add(fnev);
 
-		// JTextField Reg.No.
+		
 		txtFelh = new JTextField(10);
 		txtFelh.setBounds(140, 65, 170, 23);
 		txtFelh.setBorder(border);
@@ -50,7 +45,7 @@ public class Mod extends JPanel implements ActionListener, FocusListener {
 		txtFelh.addFocusListener(this);
 		add(txtFelh);
 
-		// JButton Search
+		
 		btn_search = new JButton("Keres\u00E9s");
 		btn_search.setFont(new Font("Arial", Font.PLAIN, 12));
 		btn_search.setBounds(344, 64, 100, 23);
@@ -60,13 +55,13 @@ public class Mod extends JPanel implements ActionListener, FocusListener {
 		btn_search.addActionListener(this);
 		add(btn_search);
 
-		// JLabel Class
-		clas = new JLabel("Jelsz\u00F3:");
-		clas.setBounds(30, 101, 100, 30);
-		clas.setFont(new Font("Arial", Font.BOLD, 12));
-		add(clas);
+		
+		pw = new JLabel("Jelsz\u00F3:");
+		pw.setBounds(30, 101, 100, 30);
+		pw.setFont(new Font("Arial", Font.BOLD, 12));
+		add(pw);
 
-		// JTextField Class
+	
 		txtPw = new JTextField(10);
 		txtPw.setBounds(140, 106, 100, 23);
 		txtPw.setBorder(border);
@@ -75,13 +70,13 @@ public class Mod extends JPanel implements ActionListener, FocusListener {
 		txtPw.addFocusListener(this);
 		add(txtPw);
 
-		// JLabel Student's Name
-		sname = new JLabel("N\u00E9v:");
-		sname.setBounds(30, 183, 100, 30);
-		sname.setFont(new Font("Arial", Font.BOLD, 12));
-		add(sname);
+		
+		nev = new JLabel("N\u00E9v:");
+		nev.setBounds(30, 183, 100, 30);
+		nev.setFont(new Font("Arial", Font.BOLD, 12));
+		add(nev);
 
-		// JTextField Student's Name
+	
 		txtName = new JTextField(10);
 		txtName.setBounds(140, 188, 170, 23);
 		txtName.setBorder(border);
@@ -90,13 +85,13 @@ public class Mod extends JPanel implements ActionListener, FocusListener {
 		txtName.addFocusListener(this);
 		add(txtName);
 
-		// JLabel Father's Name
-		fname = new JLabel("E-mail:");
-		fname.setBounds(30, 224, 100, 30);
-		fname.setFont(new Font("Arial", Font.BOLD, 12));
-		add(fname);
+		
+		email = new JLabel("E-mail:");
+		email.setBounds(30, 224, 100, 30);
+		email.setFont(new Font("Arial", Font.BOLD, 12));
+		add(email);
 
-		// JTextField Father's Name
+	
 		txtTip = new JTextField(10);
 		txtTip.setBounds(140, 147, 100, 23);
 		txtTip.setBorder(border);
@@ -105,7 +100,7 @@ public class Mod extends JPanel implements ActionListener, FocusListener {
 		txtTip.addFocusListener(this);
 		add(txtTip);
 
-		// JTextField Mother's Name
+		
 		txtEmail = new JTextField(10);
 		txtEmail.setBounds(140, 229, 206, 23);
 		txtEmail.setBorder(border);
@@ -114,19 +109,19 @@ public class Mod extends JPanel implements ActionListener, FocusListener {
 		txtEmail.addFocusListener(this);
 		add(txtEmail);
 
-		// JLabel Category
-		category = new JLabel("Tipus:");
-		category.setBounds(30, 142, 170, 30);
-		category.setFont(new Font("Arial", Font.BOLD, 12));
-		add(category);
 
-		// JLabel Date of Birth
-		studob = new JLabel("Sz\u00FClet\u00E9si id\u0151:");
-		studob.setBounds(30, 305, 170, 30);
-		studob.setFont(new Font("Arial", Font.BOLD, 12));
-		add(studob);
+		tip = new JLabel("Tipus:");
+		tip.setBounds(30, 142, 170, 30);
+		tip.setFont(new Font("Arial", Font.BOLD, 12));
+		add(tip);
 
-		// JTextFields Date of Birth
+		
+		szulido = new JLabel("Sz\u00FClet\u00E9si id\u0151:");
+		szulido.setBounds(30, 305, 170, 30);
+		szulido.setFont(new Font("Arial", Font.BOLD, 12));
+		add(szulido);
+
+		
 		txtSzulido = new JTextField(2);
 		txtSzulido.setBounds(140, 310, 170, 23);
 		txtSzulido.setBorder(border);
@@ -135,13 +130,13 @@ public class Mod extends JPanel implements ActionListener, FocusListener {
 		txtSzulido.addFocusListener(this);
 		add(txtSzulido);
 
-		// JLabel Sex
+		
 		sex = new JLabel("Nem:");
 		sex.setBounds(30, 265, 100, 30);
 		sex.setFont(new Font("Arial", Font.BOLD, 12));
 		add(sex);
 
-		// JTextField Sex
+		
 		txtSex = new JTextField(10);
 		txtSex.setBounds(140, 270, 89, 23);
 		txtSex.setBorder(border);
@@ -150,13 +145,13 @@ public class Mod extends JPanel implements ActionListener, FocusListener {
 		txtSex.addFocusListener(this);
 		add(txtSex);
 
-		// JLabel City
-		city = new JLabel("Orsz\u00E1g:");
-		city.setBounds(30, 346, 100, 30);
-		city.setFont(new Font("Arial", Font.BOLD, 12));
-		add(city);
+		
+		country = new JLabel("Orsz\u00E1g:");
+		country.setBounds(30, 346, 100, 30);
+		country.setFont(new Font("Arial", Font.BOLD, 12));
+		add(country);
 
-		// JTextField City
+		
 		txtCountry = new JTextField(10);
 		txtCountry.setBounds(140, 351, 170, 23);
 		txtCountry.setBorder(border);
@@ -165,7 +160,7 @@ public class Mod extends JPanel implements ActionListener, FocusListener {
 		txtCountry.addFocusListener(this);
 		add(txtCountry);
 
-		// JButton Cancel
+		
 		btn_cancel = new JButton("Vissza\u00E1ll\u00EDt");
 		btn_cancel.setFont(new Font("Arial", Font.PLAIN, 12));
 		btn_cancel.setBackground(UIManager.getColor("Button.background"));
@@ -176,7 +171,7 @@ public class Mod extends JPanel implements ActionListener, FocusListener {
 		btn_cancel.addActionListener(this);
 		add(btn_cancel);
 
-		// JButton Exit
+		
 		btn_exit = new JButton("Kil\u00E9p\u00E9s");
 		btn_exit.setFont(new Font("Arial", Font.PLAIN, 12));
 		btn_exit.setBackground(UIManager.getColor("Button.background"));
@@ -384,7 +379,6 @@ public class Mod extends JPanel implements ActionListener, FocusListener {
 
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			String url = "jdbc:mysql://db4free.net/uccusers";
 			conn = DriverManager.getConnection("jdbc:mysql://db4free.net/uccusers", "eliasadam60", "Almafa2a");
 			stmt = conn.createStatement();
 			System.out.println("Sikeres kapcsolódás");

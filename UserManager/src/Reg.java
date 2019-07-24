@@ -27,7 +27,7 @@ public class Reg extends JDialog implements ActionListener {
 	private JTextField szulido;
 	private JTextField orszag;
 	private JDateChooser date;
-	private JComboBox value;
+	
 
 	private int kilep = 0;
 	

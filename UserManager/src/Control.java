@@ -5,7 +5,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 public class Control {
-	private static SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd.");
+//	private static SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd.");
 	private static String mes = "Program üzenet";
 
 	public static String RF(JTextField a) {
@@ -20,11 +20,11 @@ public class Control {
 			return false;
 	}
 	
-	public static void DF(JTextField a) {
+	/*public static void DF(JTextField a) {
 		a.setText("");
 	}
 
-	public static boolean goodDate(JTextField a) {
+			public static boolean goodDate(JTextField a) {
 		String s = RF(a);
 		Date testDate = null;
 		try {
@@ -38,7 +38,7 @@ public class Control {
 			return false;
 	}
 
-	public static boolean goodInt(JTextField a) {
+public static boolean goodInt(JTextField a) {
 		String s = RF(a);
 		try {
 			Integer.parseInt(s);
@@ -46,14 +46,14 @@ public class Control {
 		} catch (NumberFormatException e) {
 			return false;
 		}
-	}
+	}*/
 
 	public static void showMD(String s, int i) {
 		JOptionPane.showMessageDialog(null, s, mes, i);
 		EmailSender.EmailSend();
 	}
 
-	public static Date StoD(String s) {
+	/* public static Date StoD(String s) {
 		Date testDate = null, vid = null;
 		try {
 			testDate = sdf.parse(s);
@@ -64,21 +64,21 @@ public class Control {
 			return vid;
 		}
 		return testDate;
-	}
+	} */
 
-	public static int StoI(String s) {
+/*	public static int StoI(String s) {
 		int x = -55;
 		x = Integer.parseInt(s);
 		return x;
-	}
+	}*/
 
 	public static boolean filledF(JTextField a) {
 		String s = RF(a);
 		return s.length() > 0;
 	}
 
-	public static String SDtoS(String date) {
+/*	public static String SDtoS(String date) {
 		String ddd = sdf.format(date);
 		return ddd;
-	}
+	}*/
 }

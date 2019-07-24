@@ -60,12 +60,12 @@ public class Login extends JFrame {
 		username.setColumns(10);
 
 		JLabel lblFelhasznlnv = new JLabel("Felhaszn\u00E1l\u00F3n\u00E9v:");
-		lblFelhasznlnv.setBounds(6, 67, 108, 14);
+		lblFelhasznlnv.setBounds(6, 61, 108, 20);
 		panel.add(lblFelhasznlnv);
 		lblFelhasznlnv.setFont(new Font("Yu Gothic", Font.BOLD, 13));
 
 		JLabel lblJelsz = new JLabel("Jelsz\u00F3:");
-		lblJelsz.setBounds(66, 98, 90, 14);
+		lblJelsz.setBounds(66, 92, 90, 20);
 		panel.add(lblJelsz);
 		lblJelsz.setFont(new Font("Yu Gothic", Font.BOLD, 13));
 

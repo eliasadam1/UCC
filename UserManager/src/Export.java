@@ -105,7 +105,7 @@ public class Export extends JPanel implements ActionListener {
 		chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 		
 		//
-		// disable the "All files" option.
+		// Fájlok kiválasztását nem engedélyezi 
 		//
 		chooser.setAcceptAllFileFilterUsed(false);
 		//
@@ -141,7 +141,7 @@ public class Export extends JPanel implements ActionListener {
 
 			try {
 				File file = new File(path);
-				writer = new FileWriter(file, true); // True = Append to file, false = Overwrite
+				writer = new FileWriter(file, true); // True = fájl hozzáadása, false = felülírás
 				while ((rec != null) && (rec.next())) {
 					writer.write(rec.getString("username"));
 					writer.write(",");

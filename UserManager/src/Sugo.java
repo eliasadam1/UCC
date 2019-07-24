@@ -33,7 +33,7 @@ public class Sugo extends JDialog {
 
 		JLabel General = new JLabel("\u00DCdv\u00F6z\u00F6llek! Itt mindent megtal\u00E1lsz amire sz\u00FCks\u00E9ged van a program haszn\u00E1lat\u00E1hoz!");
 		General.setFont(new Font("Yu Gothic", Font.PLAIN, 17));
-		General.setBounds(10, 11, 715, 28);
+		General.setBounds(10, 11, 715, 33);
 		GeneralPanel.add(General);
 
 		GeneralAltTitle1 = new JLabel("Miel\u0151tt kiv\u00E1lasztan\u00E1l egy men\u00FCpontot!");
@@ -68,7 +68,7 @@ public class Sugo extends JDialog {
 
 		JLabel betoltTitle = new JLabel("Regisztr\u00E1ci\u00F3");
 		betoltTitle.setFont(new Font("Yu Gothic", Font.PLAIN, 17));
-		betoltTitle.setBounds(10, 11, 715, 18);
+		betoltTitle.setBounds(10, 11, 715, 31);
 		betolt.add(betoltTitle);
 
 		JLabel betoltAltTitle = new JLabel("1. T\u00F6ltse ki a *-al jel\u00F6lt adatok hely\u00E9t, ha szeretn\u00E9 a t\u00F6bbit is kit\u00F6ltheti de nem k\u00F6telez\u0151.");
@@ -111,7 +111,7 @@ public class Sugo extends JDialog {
 				
 						JLabel kiirTitle = new JLabel("Lista");
 						kiirTitle.setFont(new Font("Yu Gothic", Font.PLAIN, 17));
-						kiirTitle.setBounds(10, 11, 715, 18);
+						kiirTitle.setBounds(10, 11, 715, 28);
 						kiir.add(kiirTitle);
 						
 								JLabel kiirAltTitle = new JLabel(
@@ -137,7 +137,7 @@ public class Sugo extends JDialog {
 
 		JLabel ujTitle = new JLabel("Keres\u00E9s");
 		ujTitle.setFont(new Font("Yu Gothic", Font.PLAIN, 17));
-		ujTitle.setBounds(10, 11, 715, 18);
+		ujTitle.setBounds(10, 11, 715, 28);
 		ujPanel.add(ujTitle);
 
 		JLabel ujAltTitle = new JLabel(
@@ -169,7 +169,7 @@ public class Sugo extends JDialog {
 
 		JLabel modTitle = new JLabel("M\u00F3dos\u00EDt\u00E1s");
 		modTitle.setFont(new Font("Yu Gothic", Font.PLAIN, 17));
-		modTitle.setBounds(10, 11, 715, 18);
+		modTitle.setBounds(10, 11, 715, 28);
 		modPanel.add(modTitle);
 
 		JLabel modAltTitle = new JLabel("1. Admin hozz\u00E1f\u00E9r\u00E9s\u0171 men\u00FCpont, csak admin fi\u00F3k l\u00E9phet be.");
@@ -210,7 +210,7 @@ public class Sugo extends JDialog {
 
 		JLabel torolTitle = new JLabel("Export\u00E1l\u00E1s");
 		torolTitle.setFont(new Font("Yu Gothic", Font.PLAIN, 17));
-		torolTitle.setBounds(10, 11, 715, 18);
+		torolTitle.setBounds(10, 11, 715, 28);
 		torolPanel.add(torolTitle);
 
 		JLabel torolAltTitle2 = new JLabel(
